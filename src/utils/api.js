@@ -20,3 +20,8 @@ export async function searchQuery(value, limit = 10) {
 
   return query;
 }
+
+export async function getProfile(key) {
+  const profile = await fetchFromAPI(`/company/profile/${key}`);
+  return profile;
+}

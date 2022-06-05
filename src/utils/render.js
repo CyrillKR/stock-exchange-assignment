@@ -32,7 +32,7 @@ export function renderSearchListItems(items) {
     const a = document.createElement('a');
     a.href = `./pages/company.html?symbol=${symbol}`;
     a.classList.add("search-link")
-    a.textContent = `${name} ${symbol}`;
+    a.textContent = `${name} (${symbol})`;
     li.appendChild(a);
 
     nodes.push(li);

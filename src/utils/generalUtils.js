@@ -15,41 +15,48 @@ export function refactorProfileData(data) {
       name: "",
       symbol: "",
       link: "",
-    },
-    business: {},
-    about: {
-      geo: {},
-      description: "",
-      ceo: ""
-    },
-    img: {
-      name: "",
       img: "",
+      business: {
+        price: 0,
+        industry: "",
+        changes: 0,
+        changesPercentage: ""
+      },
+    },
+    about: {
+      name: "",
+      description: "",
+      ceo: "",
+      geo: {
+        city: "",
+        country: "",
+        address: "",
+        state: "",
+      }
     },
   };
 
   const { profile, symbol } = data;
-  const { address, city, country, currency, industry, price, changes, changesPercentage, ceo, description, image: img, companyName: name, website: link } = profile;
-  
+  const { address, city, country, currency, state, industry, price, changes, changesPercentage, ceo, description, image: img, companyName: name, website: link } = profile;
+
   refactored.header.symbol = symbol;
   refactored.header.name = name;
   refactored.header.img = img;
   refactored.header.link = link;
 
-  refactored.img.img = img;
-  refactored.img.name = name;
+  refactored.header.business.price = price;
+  refactored.header.business.industry = industry;
+  refactored.header.business.changes = changes;
+  refactored.header.business.changesPercentage = changesPercentage;
 
-  refactored.business.price = price;
-  refactored.business.industry = industry;
-  refactored.business.changes = changes;
-  refactored.business.changesPercentage = changesPercentage;
-  
+  refactored.about.name = name;
   refactored.about.ceo = ceo;
   refactored.about.description = description;
   refactored.about.geo.address = address;
   refactored.about.geo.city = city;
   refactored.about.geo.country = country;
   refactored.about.geo.currency = currency;
+  refactored.about.geo.state = state;
 
   return refactored;
 }

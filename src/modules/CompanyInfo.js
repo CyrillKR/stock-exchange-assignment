@@ -170,7 +170,7 @@ class CompanyBusiness extends CompanyItem {
     const { price, changes, changesPercentage, industry } = profile;
     return `<div class="company-business-container">
           <p>Price: ${price}</p>
-          <p>Changes: ${changes} <span id="changes-percantage">(${changesPercentage})</span></p>
+          <p>Changes: ${changes} <span class="changes-percentage">(${changesPercentage})</span></p>
           <p>Industry: ${industry}</p>
         </div>`;
   }

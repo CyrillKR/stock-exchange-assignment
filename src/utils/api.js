@@ -23,5 +23,12 @@ export async function searchQuery(value, limit = 10) {
 
 export async function getProfile(key) {
   const profile = await fetchFromAPI(`/company/profile/${key}`);
+  console.log(profile);
   return profile;
+}
+
+export async function getCompanyHistory(key) {
+  const history = await fetchFromAPI(`/historical-price-full/${key}`);
+  console.log(history);
+  return history;
 }

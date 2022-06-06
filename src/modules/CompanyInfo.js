@@ -1,5 +1,5 @@
 import { getQueryParam, refactorProfileData } from "../utils/generalUtils.js";
-import { getProfile } from "../utils/api.js";
+import { getProfile, getCompanyHistory } from "../utils/api.js";
 
 export default class CompanyInfo {
   static generateLoader() {
@@ -18,6 +18,10 @@ export default class CompanyInfo {
     return refactorProfileData(profile);
   }
 
+  static async getAndAssignHistory(key) {
+    return await getCompanyHistory(key);
+  }
+
   static generateParentNode() {
     const section = document.createElement("section");
     section.classList.add("section-container", "company-info-container");
@@ -25,14 +29,21 @@ export default class CompanyInfo {
     return section;
   }
 
-  static generateNodes(profile) {
+  static createNodes(profile) {
     const profileKeys = Object.keys(profile);
-    console.log(profileKeys);
+    let nodes = {};
+
+    profileKeys.forEach((key) => {
+      nodes[key] = new CompanyItem(key, profile);
+    });
+
+    return nodes;
   }
 
   constructor() {
     this.loader;
     this.profile;
+    this.history;
     this.symbol;
     this.parentNode;
     this.nodes;
@@ -57,16 +68,51 @@ export default class CompanyInfo {
       try {
         this.activateLoader();
         this.profile = await CompanyInfo.getAndRefactorProfile(this.symbol);
+        this.history = await CompanyInfo.getAndAssignHistory(this.symbol);
       } catch (err) {
         console.error(err);
       } finally {
         this.deactivateLoader();
       }
 
-      this.nodes = CompanyInfo.generateNodes(this.profile);
+      this.nodes = CompanyInfo.createNodes(this.profile);
 
       const main = document.querySelector("#main");
       main.appendChild(this.parentNode);
     }
+  }
+}
+
+class CompanyItem {
+  static generateNode(type, profile) {
+    const filter = {
+      business: "article",
+      geo: "article",
+      name: "h1",
+      description: "p",
+      link: "a",
+      ceo: "h3",
+      symbol: "h2",
+    };
+
+    const element = document.createElement(filter[type] || "div");
+    element.classList.add(`company-${type}-container`);
+    element.dataset.type = type;
+    element.companyInfo = {};
+    element.companyInfo[type] = profile[type];
+
+    return element;
+  }
+
+  constructor(type, profile) {
+    this.type = type;
+    this.profile = profile;
+    this.node = CompanyItem.generateNode(type, profile);
+  }
+}
+
+class CompanyChart {
+  constructor(data) {
+    this.data = data;
   }
 }

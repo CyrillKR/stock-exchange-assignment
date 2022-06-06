@@ -1,5 +1,5 @@
-import { getQueryParam, refactorProfileData } from "../utils/generalUtils.js";
-import { getProfile, getCompanyHistory } from "../utils/api.js";
+import { getQueryParam, refactorProfileData } from "../../utils/generalUtils.js";
+import { getProfile, getCompanyHistory } from "../../utils/api.js";
 
 export default class CompanyInfo {
   static generateLoader() {

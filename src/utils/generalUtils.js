@@ -60,3 +60,7 @@ export function refactorProfileData(data) {
 
   return refactored;
 }
+
+export function getPageTitle() {
+  return document.title;
+}

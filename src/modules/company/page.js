@@ -1,3 +1,7 @@
 import CompanyInfo from "./CompanyInfo.js";
-
-(() => new CompanyInfo())();
+import Footer from "../footer/footer.js";
+(() => {
+  new CompanyInfo()
+  new Footer();  
+}
+)();

@@ -64,6 +64,7 @@
 .search-list a {
   text-decoration: none;
 }
+
 /* Loader */
 
 .loader {
@@ -94,4 +95,40 @@
     transform: rotateY(180deg);
     left: -5%;
   }
+}
+
+/* Footer */
+.footer {
+  border: 1px solid black;
+  color: wheat;
+  background: black;
+  width: 100vw;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+}
+
+.footer-text {
+  display: flex;
+  justify-content: space-around;
+  padding: 0.4em 0;
+  align-items: center;
+}
+
+.footer-link {
+  color: black;
+  background-color: wheat;
+  text-decoration: none;
+  border: 1px solid black;
+  padding: 3px 5px;
+  border-radius: 4px;
+}
+
+.footer-link:hover {
+  color: white;
+  background-color: black;
+}
+
+.footer-link:active {
+  color: blue;
 }

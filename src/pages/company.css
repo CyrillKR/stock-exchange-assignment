@@ -1,0 +1,12 @@
+.changes-positive {
+  color: green;
+}
+
+.changes-negative {
+  color: red;
+}
+
+.history-chart {
+  max-width: 640px;
+  margin-bottom: 50px;
+}

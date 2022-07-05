@@ -1,4 +1,4 @@
-import { 
+import {
   refactorHistoricalArray,
   generateConfig,
   generateDataObj
@@ -28,23 +28,23 @@ export default class HistoryChart {
     return canvas;
   }
 
-  static generateChart(labels,values,canvas) {
-    const data = generateDataObj(labels,values,"high");
+  static generateChart(labels, values, canvas) {
+    const data = generateDataObj(labels, values, "High");
     const config = generateConfig("line", data);
     console.log(config);
     return new Chart(canvas, config);
   }
-  
+
   constructor(history, limit) {
     this.parentContainer = HistoryChart.generateParentContainer();
     this.canvas = HistoryChart.generateCanvas(this.parentContainer);
     this.dates = HistoryChart.generateDates(history, limit);
-    this.values = HistoryChart.generateValues(history,limit);
-    this.chart = HistoryChart.generateChart(this.dates, this.values,this.canvas);
+    this.values = HistoryChart.generateValues(history, limit);
+    this.chart = HistoryChart.generateChart(this.dates, this.values, this.canvas);
   }
 
-  init() {
-    document.body.appendChild(this.parentContainer);
+  get element() {
+    return this.parentContainer;
   }
 }
 

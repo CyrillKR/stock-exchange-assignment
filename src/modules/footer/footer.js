@@ -17,12 +17,12 @@ export default class Footer {
 
   generateLink(title) {
     console.log(title);
-    return title === "Stock Exchange Home" ? "/src/index.html" : "../index.html"
+    return title === "Stock Exchange Home" ? "/src/index.html" : "../index.html";
   }
 
   init() {
-    const footerHTML = 
-    `
+    const footerHTML =
+      `
       <h1>Copyright &#169 ${this.signature} ${this.year}</h1>
       <a href="${this.link}" class="footer-link">Back to home page</a>
     ` ;

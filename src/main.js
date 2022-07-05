@@ -3,7 +3,7 @@ import Footer from "./modules/footer/footer.js";
 import {
   renderSearchListItems,
   renderLoader,
-  disableLoader 
+  disableLoader
 } from "./utils/render.js";
 
 async function searchEvent(e) {
@@ -14,7 +14,7 @@ async function searchEvent(e) {
     renderLoader();
     const results = await searchQuery(searchBar.value);
     renderSearchListItems(results);
-  } catch(err) {
+  } catch (err) {
     console.error(err);
   } finally {
     disableLoader();

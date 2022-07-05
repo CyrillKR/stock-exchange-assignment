@@ -1,4 +1,4 @@
-const BASE_URL = "https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3"
+const BASE_URL = "https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3";
 
 export default async function fetchFromAPI(endpoint, url = BASE_URL) {
   if (endpoint[0] !== "/") {
@@ -10,7 +10,7 @@ export default async function fetchFromAPI(endpoint, url = BASE_URL) {
     const response = await fetch(requestTarget);
     const data = await response.json();
     return data;
-  } catch(err) {
+  } catch (err) {
     console.error(err);
   }
 }

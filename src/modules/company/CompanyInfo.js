@@ -1,5 +1,5 @@
 import { getQueryParam, refactorProfileData } from "../../utils/generalUtils.js";
-import Chart from './Chart.js'
+import Chart from './Chart.js';
 import { getProfile, getCompanyHistory } from "../../utils/api.js";
 
 export default class CompanyInfo {
@@ -93,12 +93,12 @@ export default class CompanyInfo {
       } finally {
         this.deactivateLoader();
         this.chart = new Chart(this.history, 30);
-        this.chart.init();
-        console.log(this.chart);
       }
 
       const main = document.querySelector("#main");
       main.appendChild(this.parentNode);
+      main.appendChild(this.chart.element);
+      // main.classList.add("page-wrapper");
       this.nodes = CompanyInfo.createNodes(this.profile);
       this.createAndAppendNodes();
     }
@@ -139,8 +139,8 @@ class CompanyHeader extends CompanyItem {
 
     console.log(changes, changesPercentage);
 
-    const checkChanges = (value) => (isNaN(value) ? parseInt(value) : value)>= 0 ? "positive" : "negative";
-    
+    const checkChanges = (value) => (isNaN(value) ? parseInt(value) : value) >= 0 ? "positive" : "negative";
+
     return `<article class="company-header-container">
       <div className="company-image-container">
         <image src="${img}"/>
@@ -152,7 +152,7 @@ class CompanyHeader extends CompanyItem {
       </div>
       <div class="company-business-container">
         <p>Price: ${price}</p>
-        <p>Changes: <span class="changes-${checkChanges(changes)}">${changes}</span> <span class="changes-${checkChanges(changesPercentage)}">(${parseFloat(changesPercentage).toPrecision(2)}%)</span></p>
+        <p>Changes: <span class="changes-${checkChanges(changes)}">${changes.toPrecision(2)}</span> <span class="changes-${checkChanges(changesPercentage)}">(${parseFloat(changesPercentage).toPrecision(2)}%)</span></p>
         <p>Industry: ${industry}</p>
       </ >
   </article>`;

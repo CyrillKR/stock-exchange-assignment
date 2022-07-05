@@ -15,7 +15,7 @@ export function generateDataObj(labels, data, item) {
         data
       }
     ]
-  }
+  };
 }
 
 export function generateConfig(type, data, options = {}) {
@@ -23,5 +23,5 @@ export function generateConfig(type, data, options = {}) {
     type,
     data,
     options
-  }
+  };
 }

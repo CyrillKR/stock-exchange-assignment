@@ -186,9 +186,3 @@ class CompanyAbout extends CompanyItem {
       </article>`;
   }
 }
-
-class CompanyChart {
-  constructor(data) {
-    this.data = data;
-  }
-}
